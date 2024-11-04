@@ -3,6 +3,7 @@ import streamlit as st
 from streamlit import session_state as ss
 import streamlit.components.v1 as components
 import base64
+import os
 
 st.set_page_config(page_title = "PooMo", page_icon="./burger.png", layout = "wide", initial_sidebar_state = "expanded")
 
@@ -12,8 +13,10 @@ st.set_page_config(page_title = "PooMo", page_icon="./burger.png", layout = "wid
 if "icons" not in ss: ss.icons = {}
 
 # general variables
-application_path = "./"
-application_link = "http://localhost:8501/"
+vDrive = os.path.splitdrive(os.getcwd())[0]
+application_path = "C:/Users/Shawn/dev/PooMo/" if vDrive == "C:" else "./"
+application_link = "http://localhost:8501/" if vDrive == "C:" else "http://poomocafe.streamlit.app"
+
 separater_line = f"<hr style='margin-top: 0; margin-bottom: 0; size: 1px; border: 1px solid; color: #000000; '>"
 
 # Functions  -------------------------------------------------------------------------------------------------------------------------
