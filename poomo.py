@@ -46,13 +46,7 @@ def PageMenu():
   dnld_btn = sc2.button("Download", icon=":material/download:")
   st.markdown(separater_line, True)
 
-  if menu_btn: 
-    # image_content = Image.open("./PooMo_Menu.png")
-    # image_content = image_content.resize((1000, 550), Image.ANTIALIAS)
-    image_content = open("./PooMo_Menu.png", 'rb').read()
-    st.image(image_content)
-
-
+  if menu_btn: image_content = st.image(open("./PooMo_Menu.png", 'rb').read())
   else:
     if len(ss.icons) == 0:
       icon_array = ["address", "timings", "contacts", "about"]
@@ -61,7 +55,6 @@ def PageMenu():
         ss.icons[vicon] = f"""<img src="data:png;base64,{iconfl}" width='20' height='20'>"""
     
     imgfl = './LandingPage.jpg'
-    # img_code = f"""<img src="data:jpg;base64,{ReadPictureFile(imgfl)}" width='1280' height='550'>"""
     img_code = f"""<img src="data:jpg;base64,{ReadPictureFile(imgfl)}" width='900' height='550'>"""
     sc21, sc22 = st.columns((4,1.5))
     sc21.html(img_code)
@@ -77,7 +70,8 @@ def PageMenu():
   if dnld_btn:
     pdf_content = open("./PooMo.pdf", 'rb').read()
     file_object = base64.b64encode(pdf_content).decode()
-    AutoDownload(file_object, "application/octet-stream", "PooMo_Menu.pdf")
+    # AutoDownload(file_object, "application/octet-stream", "PooMo_Menu.pdf")
+    AutoDownload(file_object, "application/pdf", "PooMo_Menu.pdf")
 
 if 'runpage' not in ss: ss.runpage = PageMenu 
 ss.runpage()
