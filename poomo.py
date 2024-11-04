@@ -3,7 +3,6 @@ import streamlit as st
 from streamlit import session_state as ss
 import streamlit.components.v1 as components
 import base64
-from PIL import Image
 
 st.set_page_config(page_title = "PooMo", page_icon="./burger.png", layout = "wide", initial_sidebar_state = "expanded")
 
@@ -48,8 +47,9 @@ def PageMenu():
   st.markdown(separater_line, True)
 
   if menu_btn: 
-    image_content = Image.open("./PooMo_Menu.png")
+    # image_content = Image.open("./PooMo_Menu.png")
     # image_content = image_content.resize((1000, 550), Image.ANTIALIAS)
+    image_content = open("./PooMo_Menu.png", 'rb').read()
     st.image(image_content)
 
 
@@ -72,7 +72,6 @@ def PageMenu():
     {ss.icons['timings']} Timings: ... <br><br>
     {ss.icons['contacts']} Contact: ...
     """
-    # sc22.title("PooMa Cafe")
     sc22.html(side_code)
 
   if dnld_btn:
